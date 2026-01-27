@@ -128,6 +128,26 @@ class Bolo {
 //   Para usar este método, você deve criar uma instância da classe, chamar este método e armazenar o valor retornado em uma variável. Em seguida, você pode imprimir esse valor.
 // print("Saldo atual: R$\(saldoAtual)")
 
+class ContaPoupanca {
+  var saldo: Double
+
+  init(saldo: Double) {
+    self.saldo = saldo
+  }
+
+  func depositar(valor: Double) {
+    saldo = saldo + valor
+  }
+
+  func consultarSaldo() -> Double {
+    return saldo
+  }
+}
+
+var minhaConta: ContaPoupanca = ContaPoupanca(saldo: 10)
+minhaConta.depositar(valor: 50)
+//print("Saldo atual: R$ \(minhaConta.consultarSaldo()) reais")
+
 
 // Exercício 2: Gerenciador de Filmes
 // Objetivo: Desenvolver uma classe chamada 'Filme' para gerenciar informações sobre filmes em um acervo pessoal.
@@ -144,6 +164,26 @@ class Bolo {
 
 //   Para usar este método, crie uma instância da classe, chame o método e armazene a informação retornada em uma variável. Em seguida, imprima essa variável para visualizar os detalhes do filme.
 
+class Filme {
+  var titulo: String
+  var diretor: String
+  var ano: Int
+  
+  init(titulo: String, diretor: String, ano: Int) {
+    self.titulo = titulo
+    self.diretor = diretor
+    self.ano = ano
+  }
+  
+  func exibirInfo() -> String {
+    return "Título: \(titulo), Diretor: \(diretor), Ano: \(ano)"
+  }
+}
+
+var avatar: Filme = Filme(titulo: "Avatar", diretor: "Caio Fabrini", ano: 2026)
+var info = avatar.exibirInfo()
+print(info)
+
 
 // Exercício 3: Sistema de Registro de Alunos
 // Objetivo: Criar uma classe chamada 'Aluno' para armazenar dados e calcular a média de notas de alunos em uma escola.
@@ -159,3 +199,65 @@ class Bolo {
 
 //   Para utilizar este método, crie uma instância da classe, invoque o método para calcular a média, armazene esse valor em uma variável e imprima a média para visualizar.
 // print("Média das notas de \(aluno.nome): \(media)")
+
+
+class Aluno {
+  var nome: String
+  var notas: [Double]
+  
+  init(nome: String, notas: [Double]) {
+    self.nome = nome
+    self.notas = notas
+  }
+  
+  func calcularMedia() -> Double {
+    var soma: Double = 0
+    for notaEspecificaAluno in notas {
+      soma += notaEspecificaAluno
+    }
+    return soma / Double(notas.count)
+  }
+}
+
+
+var barbara: Aluno = Aluno(nome: "Barbara", notas: [9, 10, 9, 10])
+print(barbara.calcularMedia())
+
+
+// MARK: - Herança
+
+// Classe PAI
+
+class Animal {
+  var nome: String
+  var cor: String
+  var peso: Double
+
+  init(nome: String, cor: String, peso: Double) {
+    self.nome = nome
+    self.cor = cor
+    self.peso = peso
+  }
+}
+
+// Classe Filha (classe na qual HERDA as propriedades/ações do pai)
+// A classe filha contem TUDO OQUE O PAI TEM E + Oque a mesma já tem
+
+
+class Gato: Animal {
+  var contemRabo: Bool = true
+}
+
+var bartolomeu: Gato = Gato(nome: "Bartolomeu", cor: "Branco", peso: 5)
+
+class Cachorro: Animal {
+  var latir: Bool
+
+  init(latir: Bool, nome: String, cor: String, peso: Double) {
+    self.latir = latir
+    super.init(nome: nome, cor: cor, peso: peso)
+  }
+
+}
+
+var ayron: Cachorro = Cachorro(latir: false, nome: "Ayron", cor: "Branco", peso: 30)
