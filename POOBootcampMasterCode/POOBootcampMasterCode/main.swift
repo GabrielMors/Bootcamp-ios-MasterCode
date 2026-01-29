@@ -9,6 +9,35 @@ import Foundation
 
 // POO -> Programação orientada a objeto
 
+//POO é um paradigma de programação que permite organizar o código em torno de objetos, que são instâncias de classes que encapsulam dados e comportamentos relacionados. Esses objetos interagem entre si por meio de métodos, que são funções que podem manipular os dados contidos nos objetos.
+//A POO tem quatro conceitos principais:
+//1.⁠ ⁠Abstração: é o processo de identificar as características mais importantes de um objeto e modelá-las em uma classe. A abstração ajuda a simplificar o problema em questão e torná-lo mais fácil de entender. Abstração é o ato de esconder detalhes complexos e mostrar só o que importa. É como usar uma máquina de café: você aperta um botão e ela faz tudo por trás dos panos — você não precisa entender como funciona por dentro, só sabe que ela entrega café.
+//2.⁠ ⁠Encapsulamento: é a ideia de que os dados e comportamentos relacionados devem ser agrupados em uma unidade coesa, que é a classe. O encapsulamento ajuda a proteger os dados de serem acessados e modificados de maneira incorreta.
+//3.⁠ ⁠Herança: é o processo de criar uma nova classe a partir de uma classe existente, aproveitando seus dados e comportamentos. A herança ajuda a evitar a duplicação de código e a criar uma hierarquia de classes que reflete a relação entre os objetos do problema em questão.
+//4.⁠ ⁠Polimorfismo: é a capacidade de os objetos se comportarem de maneira diferente em diferentes contextos. O polimorfismo permite que os métodos das classes derivadas possam substituir os métodos da classe base, proporcionando uma flexibilidade e reutilização do código.
+//A POO é uma abordagem muito útil para lidar com problemas complexos, pois permite que o código seja dividido em partes menores e mais gerenciáveis, facilitando a manutenção e a evolução do software.
+
+
+//Orientação a Objetos (OO) não é só sobre programação, mas também envolve análise e design. Vamos separar as ideias pra deixar tudo bem claro:
+//Existem 3 conceitos na Orientação a Objeto, esse conceito se refere para desenvolver qualquer software. você precisa entender esse 3 conceito:
+//
+//
+//•⁠  ⁠Análise: Entender o problema.
+//
+//•⁠  ⁠O que precisa ser feito?
+//•⁠  ⁠Qual o problema a ser resolvido?
+//
+//•⁠  ⁠Design: Planejar a solução do problema.
+//
+//•⁠  ⁠Como fazer o que precisa ser feito?
+//•⁠  ⁠Como resolver o problema
+//
+//•⁠  ⁠Programação: Criar o aplicativo (Botar a mão na massa)
+//
+//•⁠  ⁠Fazer o que precisar ser feito
+//•⁠  ⁠Implementar a solução do problema
+
+
 // MARK: - Classe -> Modelo de um OBJETO!!!
 // Atributo / Propriedades = características de um objeto
 // Ações = função / método
@@ -432,3 +461,139 @@ class Carro: Veiculo {
 //Use polimorfismo
 //Não use if ou switch
 //O salário não pode ser um valor público e alterável diretamente
+
+
+
+
+
+//MARK: - Struct
+// Com a struct, não é obrigatorio deixar o construtor de forma explicita
+// Struct NÃO ACEITA HERENÇA!!!
+// Struct aceita apenas PROTOCOLO em sua hierarquia!!
+// Struct trabalha com VALUE TYPE!!!
+
+
+struct Documento {
+    
+    var quantidadeDeFolhas: Int
+    var tipo: String
+    
+}
+
+
+var minhaCNH: Documento = Documento(quantidadeDeFolhas: 5, tipo: "Muito cara")
+var meuRG: Documento = Documento(quantidadeDeFolhas: 2, tipo: "Muito importante")
+
+
+
+
+//struct Humano {
+//    var nome: String
+//}
+//
+//var pessoa1 = Humano(nome: "Gabriel")// Objeto
+//var pessoa2 = pessoa1  // copia do VALOR
+//
+//
+//print(pessoa1.nome)//Gabriel
+//print(pessoa2.nome)//Gabriel
+//
+//pessoa2.nome = "Renato" // O Swift copiou os dados
+////São duas pessoas diferentes na memória
+//
+//print(pessoa1.nome)//Gabriel
+//print(pessoa2.nome)//Renato
+
+
+class Humano {
+    var nome: String
+    
+    init(nome: String) {
+        self.nome = nome
+    }
+}
+
+var pessoa1 = Humano(nome: "Gabriel")// Objeto
+var pessoa2 = pessoa1 // Referência para o MESMO OBJETO
+
+
+print(pessoa1.nome)//Gabriel
+print(pessoa2.nome)//Gabriel
+
+pessoa2.nome = "Renato"
+
+
+print(pessoa1.nome)//Renato
+print(pessoa2.nome)//Renato
+
+// ----------------------//---------------------
+
+//struct ContaBancaria {
+//    var saldo: Double
+//}
+//
+//var contaA = ContaBancaria(saldo: 100)
+//var contaB = contaA // Copia
+//
+//contaB.saldo = 50
+//
+//print(contaA.saldo)// 100
+//print(contaB.saldo)// 50
+
+
+
+class ContaBancaria {
+    var saldo: Double
+    
+    init(saldo: Double) {
+        self.saldo = saldo
+    }
+}
+
+var contaA = ContaBancaria(saldo: 100)
+var contaB = contaA
+
+contaB.saldo = 50
+
+print(contaA.saldo)// 50
+print(contaB.saldo)// 50
+
+
+// ----------------------//---------------------
+
+class Carro2 {
+    var modelo: String
+    
+    init(modelo: String) {
+        self.modelo = modelo
+    }
+}
+
+
+let carro1 = Carro2(modelo: "Fusca")
+let carro2 = carro1
+
+
+let carro3 = Carro2(modelo: "Ferrari")
+let carro4 = carro3
+
+
+print(carro1 === carro2)// true
+
+// === Verifica se é o mesmo OBJETO NA MEMÓRIA
+// So funciona com class
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
