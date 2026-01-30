@@ -300,6 +300,12 @@ var ayron: Cachorro = Cachorro(latir: false, nome: "Ayron", cor: "Branco", peso:
 // Tudo que você coloca sendo private -> ele só existe dentro daquele bloco!!
 
 
+//open: Acessível em qualquer lugar do mesmo módulo e módulos importados. Permite herança e sobrescrita (override) fora do módulo.
+//public: Semelhante ao open, mas restringe a herança/sobrescrita a módulos que o definiram.
+//internal: (Padrão) Acessível apenas dentro do módulo de origem (projeto/framework).
+//fileprivate: Restringe o acesso apenas ao arquivo fonte onde foi definido.
+//private: Restringe o acesso apenas ao escopo definido (ex: dentro de uma classe ou extensão).
+
 class Computador {
     private var armazenamento: Int
     internal var processador: String
@@ -416,7 +422,7 @@ class Carro: Veiculo {
 
 // Descrição
 //Você precisa criar um cofre digital que protege um valor armazenado.
-//🎯 O que precisa ser feito
+// O que precisa ser feito
 //Crie uma classe Cofre
 //O valor armazenado deve ser private
 //Crie métodos para:
@@ -425,7 +431,7 @@ class Carro: Veiculo {
 //O saque só pode acontecer se houver saldo suficiente
 //Crie um método para consultar o saldo
 
-//⚠️ Regras
+// Regras
 //O saldo não pode ser acessado diretamente
 //Todo acesso deve passar pelos métodos da classe
 
@@ -584,8 +590,303 @@ print(carro1 === carro2)// true
 // So funciona com class
 
 
+//private(set)
+//• Quando você escreve private(set) antes de uma propriedade, significa que:
+//• A propriedade é pública para leitura no escopo onde ela é visível (por exemplo, internal por padrão, ou public se você declarar).
+//• Mas o setter é privado, ou seja, só pode ser modificado dentro do mesmo arquivo/estrutura/classe onde foi declarado (no mesmo tipo).
 
 
+//• Struct é um tipo por valor. A imutabilidade é incentivada, mas depende de como você declara e usa as instâncias.
+//• Se a instância for criada como let, ela é imutável por completo: você não pode alterar nenhuma propriedade, mesmo que a propriedade seja var.
+//• Se a instância for criada como var, você pode modificar as propriedades — porém, dentro de métodos da própria struct, qualquer método que altere o estado precisa ser marcado como mutating.
+
+
+
+struct Contador {
+    public private(set) var valor: Int = 0
+    
+    mutating func incrementar() {// Porque structs são imutáveis por padrão. mutating permite alterar o próprio valor.
+        valor += 1
+    }
+    
+    func getValue() -> Int {
+        return valor
+    }
+}
+
+
+var c = Contador()
+//c.valor = 10 // -> Erro setter é privado
+print(c.valor)// OK: Leitura permitida
+c.incrementar()// Ok: Pode modificar por metodos internos
+
+
+//MARK: - Desafios
+
+//1️⃣ Classe e Objeto
+//Deve criar uma classe representando algo concreto (ex: Pessoa, Carro, Produto).
+//A classe define atributos (estado) e métodos (comportamento).
+//Ao criar dois objetos, cada um deve possuir estado próprio, provando que objetos são instâncias independentes da mesma classe.
+
+class Pessoa2 {
+    var nome: String
+    var idade: Int
+    
+    init(nome: String, idade: Int) {
+        self.nome = nome
+        self.idade = idade
+    }
+    
+    func apresentar() {
+        print("Meu nome é \(nome) e tenho \(idade) anos.")
+    }
+}
+
+let pessoa4 = Pessoa2(nome: "Merenfeld", idade: 22)// Objeto
+let pessoa5 = Pessoa2(nome: "Juliano", idade: 34)// Objeto
+
+print(pessoa4 === pessoa5)// False
+
+pessoa4.apresentar()
+pessoa5.apresentar()
+
+//2️⃣ Estado influencia comportamento
+//Deve mostrar que o mesmo método produz resultados diferentes dependendo do estado interno do objeto.
+//Ex: status ativo/inativo, ligado/desligado.
+//Conceito avaliado:
+//Comportamento depende de estado → base da POO real.
+
+class Lampada {
+    var ligada: Bool = false
+    
+    func alternar() {
+        ligada.toggle()
+    }
+    
+    func status() {
+        print(ligada ? "Lâmpada ligada" : "Lâmpada desligada")
+    }
+}
+
+let lampada = Lampada()
+lampada.status()//Lâmpada desligada
+lampada.alternar()// alterou de false para true
+lampada.status()//Lâmpada ligada
+
+
+//3️⃣ Ciclo de vida do objeto
+//A classe deve exigir dados obrigatórios no momento da criação.
+//Não pode existir objeto “incompleto” ou inválido.
+//Conceito avaliado:
+//Responsabilidade do init, integridade do objeto.
+
+class Usuario {
+    let email: String
+    
+    init(email: String) {
+        self.email = email
+    }
+}
+
+let usuario = Usuario(email: "gabriel@gmail.com")
+
+
+//4️⃣ Encapsulamento de dados
+//Deve impedir acesso direto a atributos sensíveis e controlar alterações por métodos.
+//Exemplo clássico: saldo, senha, status.
+//Conceito avaliado:
+//Encapsulamento ≠ esconder por esconder, mas proteger regras.
+
+//class Conta {
+//    private var saldo: Double = 0
+//    
+//    func consultarSaldo() -> Double {
+//        saldo
+//    }
+//    
+//    func depositar(valor: Double) {
+//        saldo += valor
+//    }
+//}
+//
+//let contaGabriel = Conta()
+//print(contaGabriel.consultarSaldo())
+//contaGabriel.depositar(valor: 10)
+
+//5️⃣ Controle de regras de negócio
+//A própria classe valida suas regras antes de alterar o estado.
+//Ex: impedir valores negativos, estados inválidos.
+//Conceito avaliado:
+//Objeto é responsável por sua consistência.
+
+class Conta {
+    private var saldo: Double = 0
+    
+    func sacar(valor: Double) {
+        guard valor <= saldo else {
+            print("Saldo insuficiente")
+            return
+        }
+        saldo -= valor
+    }
+    
+    func depositar(valor: Double) {
+        saldo += valor
+    }
+}
+
+
+//6️⃣ Struct vs Class
+
+struct ProdutoStruct {
+    var preco: Double
+}
+
+class ProdutoClass {
+    var preco: Double
+    
+    init(preco: Double) {
+        self.preco = preco
+    }
+}
+
+var ps1 = ProdutoStruct(preco: 10)
+var ps2 = ps1
+ps2.preco = 15
+
+print(ps1.preco)// 10
+
+let pc1 = ProdutoClass(preco: 100)
+let pc2 = pc1
+pc2.preco = 20
+
+print(pc1.preco)// 20
+
+
+
+//8️⃣ Herança e override
+
+class Animal2 {
+    func emitirSom() {
+        print("Som generico")
+    }
+}
+
+class Cachorro2: Animal2 {
+    
+    override func emitirSom() {
+        print("Latido")
+    }
+}
+
+
+let animal: Animal2 = Cachorro2()
+animal.emitirSom()
+
+//-----------------//----------------
+
+class Ave {
+    func voar() {
+        print("voando")
+    }
+}
+
+class Pinguim: Ave {
+//    Herança ruim: pinguim nao voa
+}
+
+
+
+class Forma {
+    func area() -> Double { 0 }
+}
+
+class Quadrado: Forma {
+    override func area() -> Double { 25 }
+}
+
+class Circulo: Forma {
+    override func area() -> Double { 78.9 }
+}
+
+
+//1️⃣2️⃣ Uso polimórfico
+//Objetos de tipos diferentes são tratados por um tipo comum (classe base ou protocolo) e respondem corretamente ao método.
+//Substituição e polimorfismo real.
+
+let formas: [Forma] = [Quadrado(), Circulo()]
+
+for forma in formas {
+    print(forma.area())
+}
+
+
+
+//MARK: - Inicializadores / Construtores
+
+
+
+class Casa {
+    
+    var numeroDeQuartos: Int
+    var localizacao: String
+    
+//    Inicializador principal que deve configurar todas as propriedades.
+    init(numeroDeQuartos: Int, localizacao: String) {
+        self.numeroDeQuartos = numeroDeQuartos
+        self.localizacao = localizacao
+    }
+    
+    
+//convenience init
+//Inicializador secundário que fornece valores padrão ou simplifica a criação da instância.
+    convenience init() {
+        self.init(numeroDeQuartos: 5, localizacao: "São Paulo")
+    }
+    
+    convenience init(numeroDeQuartos: Int) {
+        self.init(numeroDeQuartos: numeroDeQuartos, localizacao: "São Paulo")
+    }
+    
+//    Failable Initializer
+//    Inicializador que pode falhar e retornar nil SE as condições nao forem atendidas
+    init?(numeroDeQuartos: Int, localizacao: String, validaQuarto: Bool) {
+        if validaQuarto == false || numeroDeQuartos < 2 {
+            return nil
+        }
+        self.numeroDeQuartos = numeroDeQuartos
+        self.localizacao = localizacao
+    }
+    
+//    Exige que todas as subclasses implementem esse inicializador
+    required init(localizacao: String) {
+        self.localizacao = localizacao
+        self.numeroDeQuartos = 10
+    }
+}
+
+var minhaCasa: Casa = Casa(numeroDeQuartos: 10, localizacao: "Guaruja")
+var minhaCasa2: Casa = Casa()
+var minhaCasa3: Casa = Casa(numeroDeQuartos: 2)
+
+
+
+class CasaDePraia: Casa {
+    
+    var distanciaDaPraia: Int
+    
+    init(distanciaDaPraia: Int) {
+        self.distanciaDaPraia = distanciaDaPraia
+        super.init(numeroDeQuartos: 10, localizacao: "SP")
+    }
+    
+    required init(localizacao: String) {
+        self.distanciaDaPraia = 1000
+        super.init(localizacao: localizacao)
+    }
+}
+
+var minhaCasaDePraia: CasaDePraia = CasaDePraia(localizacao: "SP")
 
 
 
