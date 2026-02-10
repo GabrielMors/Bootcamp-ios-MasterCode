@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dYX-wf-7EM">
     <device id="retina6_3" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
@@ -17,13 +17,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8i0-0B-eIw">
-                                <rect key="frame" x="150" y="134" width="102" height="57"/>
+                                <rect key="frame" x="150" y="188" width="102" height="57"/>
                                 <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="46"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite seu email:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="46m-a4-mnk">
-                                <rect key="frame" x="20" y="241" width="362" height="40"/>
+                                <rect key="frame" x="20" y="295" width="362" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="pi9-u3-bwz"/>
                                 </constraints>
@@ -31,7 +31,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sFS-ws-WVC">
-                                <rect key="frame" x="20" y="301" width="362" height="40"/>
+                                <rect key="frame" x="20" y="355" width="362" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="NSC-Up-Ahw"/>
                                 </constraints>
@@ -39,7 +39,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hL5-6u-owH">
-                                <rect key="frame" x="20" y="401" width="362" height="40"/>
+                                <rect key="frame" x="20" y="455" width="362" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="aDS-NR-SOc"/>
                                 </constraints>
@@ -66,6 +66,7 @@
                             <constraint firstItem="sFS-ws-WVC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="uZq-sb-mL9"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="11H-Hm-ZFL"/>
                     <connections>
                         <outlet property="emailTextField" destination="46m-a4-mnk" id="CtX-CL-Reu"/>
                         <outlet property="loginButton" destination="hL5-6u-owH" id="jum-87-2nF"/>
@@ -75,7 +76,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-297" y="-117"/>
+            <point key="canvasLocation" x="622.38805970149247" y="-117.39130434782608"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="tlR-J9-6IR">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dYX-wf-7EM" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TSl-Eg-dIb">
+                        <rect key="frame" x="0.0" y="124" width="402" height="54"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="hBB-sy-IXi"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hmE-7M-OWD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-297.0149253731343" y="-117.39130434782608"/>
         </scene>
     </scenes>
     <resources>

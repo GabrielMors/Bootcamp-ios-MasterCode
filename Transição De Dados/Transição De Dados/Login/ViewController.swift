@@ -32,14 +32,23 @@ class ViewController: UIViewController {
 //    O Operador as? tenta fazer um cast (conversão) segura do tipo da variavel. Nesse exemplo, ele tenta converter o resultado para o tipo HomeViewController. Se não for possível, retrona nil ao invés de causar erro. Ou sej,a vc esta dizendo que espera que o objeto seja do tipo HomeViewController, MAS pode nao ser.
     
     @IBAction func tappedLoginButton(_ sender: UIButton) {
-        let controller = UIStoryboard(name: "HomeViewController", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
-        
+//        let controller = UIStoryboard(name: "HomeViewController", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
+//
+//        NÃO PODEMOS ACESSAR UM COMPONENTE ANTES DE DAR VIDA A ELE!!!!
 //        controller?.nameLabel.text = "Gabriel Mors"
 //        controller?.name = emailTextField.text ?? ""
         
-        navigationController?.pushViewController(controller ?? UIViewController(), animated: true)
+        
+        let controller = UIStoryboard(name: String(describing: HomeViewController.self), bundle: nil).instantiateViewController(identifier: String(describing: HomeViewController.self)) { coder -> HomeViewController? in
+            return HomeViewController(coder: coder, name: self.emailTextField.text ?? "")
+        }
+        
+        navigationController?.pushViewController(controller, animated: true)
         
     }
+    
+//    MARK: CODER é referencia da instancia
+//   É uma ferramenta que o sistema usa para criar uma classe a partir do arquivo storyboard
     
     func createdElements() {
         configTextField(textField: emailTextField, placeholder: "Digite seu email:", keyboard: .emailAddress)
