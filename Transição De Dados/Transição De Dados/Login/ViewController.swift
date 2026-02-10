@@ -22,15 +22,23 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         createdElements()
         configElements()
-        isEnableLoginButton(isEnable: false)
+        isEnableLoginButton(isEnable: true)
     }
 
 //    Ligações @IBAction representam AÇÃO DOS ELEMENTOS
 //    OBS: As ligações @IBAction SEMPRE ficam abaixo dos métodos de ciclo de vida!!!!
     
+    
+//    O Operador as? tenta fazer um cast (conversão) segura do tipo da variavel. Nesse exemplo, ele tenta converter o resultado para o tipo HomeViewController. Se não for possível, retrona nil ao invés de causar erro. Ou sej,a vc esta dizendo que espera que o objeto seja do tipo HomeViewController, MAS pode nao ser.
+    
     @IBAction func tappedLoginButton(_ sender: UIButton) {
-        view.backgroundColor = .red
-        loginLabel.text = "Gabriel"
+        let controller = UIStoryboard(name: "HomeViewController", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
+        
+//        controller?.nameLabel.text = "Gabriel Mors"
+//        controller?.name = emailTextField.text ?? ""
+        
+        navigationController?.pushViewController(controller ?? UIViewController(), animated: true)
+        
     }
     
     func createdElements() {
