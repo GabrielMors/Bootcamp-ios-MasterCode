@@ -14,4 +14,7 @@ class HomeViewController: UIViewController {
         view.backgroundColor = .red
     }
 
+    @IBAction func tappedButton(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
 }

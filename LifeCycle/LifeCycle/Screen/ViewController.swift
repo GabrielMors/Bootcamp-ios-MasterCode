@@ -49,6 +49,7 @@ class ViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: true)
         print(#function)
 //        Chamado toda vez que a tela VAI APARECER
 //        Atualiza dados
