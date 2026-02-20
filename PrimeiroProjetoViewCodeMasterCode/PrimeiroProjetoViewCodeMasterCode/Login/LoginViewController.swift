@@ -21,16 +21,32 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
-  let screen: LoginScreen = LoginScreen()
-
-  override func loadView() {
-    view = screen
-  }
-
-  override func viewDidLoad() {
-    super.viewDidLoad()
-
-  }
+    
+    var screen: LoginScreen?
+    
+    override func loadView() {
+        screen = LoginScreen()
+        view = screen
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        screen?.delegate(delegate: self)
+    }
 }
 
+extension LoginViewController: LoginScreenDelegate {
+    func didTapLoginButton() {
+        
+        let controller: UIViewController = UIViewController()
+        controller.view.backgroundColor = .red
+        navigationController?.pushViewController(controller, animated: true)
+        
+        let email = screen?.getEmail() ?? ""
+        let password = screen?.getPassword() ?? ""
+        
+        print("Email: \(email)")
+        print("Password: \(password)")
+        
+    }
+}
