@@ -28,11 +28,13 @@ import UIKit
 
 protocol LoginScreenDelegate: AnyObject {
     func didTapLoginButton()
+//    Quem for o delegate PRECISA implementar esse método
 }
 
 class LoginScreen: UIView {
     
-    private var delegate: LoginScreenDelegate?
+//    Delegate SEMPRE deve ser weak
+    private weak var delegate: LoginScreenDelegate?
     
     func delegate(delegate: LoginScreenDelegate) {
         self.delegate = delegate
@@ -41,6 +43,9 @@ class LoginScreen: UIView {
 //    Controller tem -> View (forte)
 //    View tem -> Delegate (forte)
 //    Delegate é a Controller
+    
+//    Virou um ciclo         Delegate
+//    Controller -> View -> Controller -> View -> Controller
     
     lazy var loginLabel: UILabel = {
         let label = UILabel()
@@ -90,6 +95,7 @@ class LoginScreen: UIView {
     
     @objc func didTapRegisterButton() {
         delegate?.didTapLoginButton()
+//        A View não sabe fazer login, ela só avisa que o botão foi tocado
     }
     
 //    O init padrão da UIView

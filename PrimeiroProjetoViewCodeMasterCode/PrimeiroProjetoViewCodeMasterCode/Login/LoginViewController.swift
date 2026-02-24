@@ -26,17 +26,17 @@ class LoginViewController: UIViewController {
     
     override func loadView() {
         screen = LoginScreen()
-        view = screen
+        view = screen // Referencia forte
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        screen?.delegate(delegate: self)
+        screen?.delegate(delegate: self)// LoginViewController se torna o delegate
     }
 }
 
 extension LoginViewController: LoginScreenDelegate {
-    func didTapLoginButton() {
+    func didTapLoginButton() { // LoginViewController (Delegate) faz o login, porque ele é o próprio DELEGATE que é quem vai delegar.
         
         let controller: UIViewController = UIViewController()
         controller.view.backgroundColor = .red
