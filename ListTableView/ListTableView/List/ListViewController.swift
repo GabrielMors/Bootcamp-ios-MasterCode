@@ -16,7 +16,7 @@ import UIKit
 class ListViewController: UIViewController {
 
     var screen: ListScreen?
-    var listPerson: [Person] = [Person(name: "Gabriel", lastName: "Pulga", job: "iOS Developer", image: "person.fill"),
+    var listPerson: [Person] = [Person(name: "Gabriel", lastName: "Pulga", job: "iOS Developer", image: "star.fill"),
                                 Person(name: "Gabriel", lastName: "Cavalcante", job: "Developer", image: "person.circle"),
                                 Person(name: "Gabriel", lastName: "Merenfeld", job: "Programador", image: "star.fill"),
                                 Person(name: "Felipe", lastName: "Barreto", job: "React Native Developer", image: "folder.fill"),
@@ -34,7 +34,7 @@ class ListViewController: UIViewController {
         screen?.tableView.delegate = self // Delegate -> Controlar COMPORTAMENTO
         screen?.tableView.dataSource = self // DataSource -> Forneve DADOS
     }
-
+    
 }
 
 // Comportamente
@@ -46,22 +46,21 @@ extension ListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let favoriteAction = UIContextualAction(style: .normal, title: "Favoritar") { act, view, handler in
-            tableView.reloadData()
+        let favoriteAction = UIContextualAction(style: .normal, title: "Favoritar") { _, _, handler in
+            
+            print("Favoritou: \(self.listPerson[indexPath.row].name)")
             handler(true)
-            
-            
         }
         
-        let favoriteAction2 = UIContextualAction(style: .normal, title: "Favoritar") { act, view, handler in
-            tableView.reloadData()
+        let deleteAction = UIContextualAction(style: .normal, title: "Deletar") { _, _, handler in
+            print("Deletou: \(self.listPerson[indexPath.row].name)")
             handler(true)
         }
         
         favoriteAction.backgroundColor = .blue
-        favoriteAction2.backgroundColor = .red
+        deleteAction.backgroundColor = .red
         
-        let action = UISwipeActionsConfiguration(actions: [favoriteAction, favoriteAction2])
+        let action = UISwipeActionsConfiguration(actions: [favoriteAction, deleteAction])
         return action
     }
 }
@@ -70,24 +69,33 @@ extension ListViewController: UITableViewDelegate {
 extension ListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listPerson.endIndex
+        return 1 + listPerson.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: PersonTableViewCell.identifier, for: indexPath) as? PersonTableViewCell
-        cell?.delegate = self
-        cell?.setupCell(person: listPerson[indexPath.row])
-        return cell ?? UITableViewCell()
+        
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: UserTableViewCell.identifier, for: indexPath) as? UserTableViewCell
+            cell?.setupCell(user: User(image: UIImage(systemName: "person.circle.fill") ?? UIImage(), name: "Gabriel Mors Pulga"))
+            return cell ?? UITableViewCell()
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: PersonTableViewCell.identifier, for: indexPath) as? PersonTableViewCell
+            cell?.delegate = self
+            cell?.setupCell(person: listPerson[indexPath.row - 1])
+            return cell ?? UITableViewCell()
+        }
     }
-    
     
 }
 
 
 extension ListViewController: PersonTableViewCellDelegate {
-    func tappedDeletePerson() {
+    func tappedDeletePerson(in cell: PersonTableViewCell) {
+        guard let index = screen?.tableView.indexPath(for: cell) else { return }
         
+        listPerson.remove(at: index.row)
+        
+        screen?.tableView.deleteRows(at: [index], with: .automatic)
     }
-    
     
 }

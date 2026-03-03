@@ -16,7 +16,7 @@ import UIKit
 // 6- Depois de configurar toda a celula, crie o metodo de setup!!! Ele será o responsavel para montar toda a sua celula!
 
 protocol PersonTableViewCellDelegate: AnyObject {
-    func tappedDeletePerson()
+    func tappedDeletePerson(in cell: PersonTableViewCell)
 }
 
 class PersonTableViewCell: UITableViewCell {
@@ -69,7 +69,7 @@ class PersonTableViewCell: UITableViewCell {
     }()
     
     @objc func tappedDeleteButton() {
-        delegate?.tappedDeletePerson()
+        delegate?.tappedDeletePerson(in: self)
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

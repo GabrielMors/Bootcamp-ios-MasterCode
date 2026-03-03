@@ -15,6 +15,7 @@ class ListScreen: UIView {
         tableView.backgroundColor = .white
         tableView.separatorStyle = .none
         tableView.register(PersonTableViewCell.self, forCellReuseIdentifier: PersonTableViewCell.identifier)
+        tableView.register(UserTableViewCell.self, forCellReuseIdentifier: UserTableViewCell.identifier)
         return tableView
     }()
     
