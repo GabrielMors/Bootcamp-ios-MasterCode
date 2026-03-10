@@ -20,8 +20,6 @@ protocol PersonTableViewCellDelegate: AnyObject {
 }
 
 class PersonTableViewCell: UITableViewCell {
-
-//    var identifier: String = "PersonTableViewCell"
     static var identifier = String(describing: PersonTableViewCell.self)
     weak var delegate: PersonTableViewCellDelegate?
         
@@ -83,13 +81,14 @@ class PersonTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupCell(person: Person) {
+  func setupCell(person: Person, delegate: PersonTableViewCellDelegate) {
         nameLabel.text = "Nome: \(person.name)"
         personImageView.image = UIImage(systemName: person.image)
         lastNameLabel.text = "Sobrenome: \(person.lastName)"
         jobLabel.text = "Trabalho: \(person.job)"
+        self.delegate = delegate
     }
-    
+
     private func addElements() {
         contentView.addSubview(nameLabel)
         contentView.addSubview(personImageView)
@@ -100,7 +99,6 @@ class PersonTableViewCell: UITableViewCell {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            
             personImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             personImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             personImageView.heightAnchor.constraint(equalToConstant: 100),
@@ -125,9 +123,3 @@ class PersonTableViewCell: UITableViewCell {
         ])
     }
 }
-
-
-
-
-
-
