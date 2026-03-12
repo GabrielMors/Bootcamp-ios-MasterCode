@@ -8,7 +8,6 @@
 import UIKit
 
 class ListViewController: UIViewController {
-
   var screen: ListScreen = ListScreen()
   var list: [Detail] = [
     Detail(title: "Carros", list: [
