@@ -15,13 +15,7 @@ import UIKit
 
 class ListViewController: UIViewController {
   var screen: ListScreen?
-  var listPerson: [Person] = [Person(name: "Caio", lastName: "Pulga", job: "iOS Developer", image: "star.fill"),
-                              Person(name: "Lucas", lastName: "Cavalcante", job: "Developer", image: "person.circle"),
-                              Person(name: "Gabriel", lastName: "Merenfeld", job: "Programador", image: "star.fill"),
-                              Person(name: "Felipe", lastName: "Barreto", job: "React Native Developer", image: "folder.fill"),
-                              Person(name: "Renato", lastName: "Vieira", job: "iOS Developer", image: "staroflife.fill"),
-  ]
-
+  var viewModel: ListViewModel = ListViewModel()
 
   override func loadView() {
     screen = ListScreen()
@@ -45,7 +39,7 @@ extension ListViewController: UITableViewDelegate {
     if indexPath.row == 0 {
       print("Selecionei a primeira celula")
     } else {
-      let person = listPerson[indexPath.row - 1]
+      let person = viewModel.loudCurrentPerson(index: indexPath.row)
       print(person.name)
     }
   }
@@ -56,7 +50,7 @@ extension ListViewController: UITableViewDelegate {
       if indexPath.row == 0 {
         print("Favoritei a primeira celula")
       } else {
-        let person = self.listPerson[indexPath.row - 1]
+        let person = self.viewModel.loudCurrentPerson(index: indexPath.row)
         print("Favoritei " + person.name)
       }
       handler(true)
@@ -66,7 +60,7 @@ extension ListViewController: UITableViewDelegate {
       if indexPath.row == 0 {
         print("Deletei a primeira celula")
       } else {
-        let person = self.listPerson[indexPath.row - 1]
+        let person = self.viewModel.loudCurrentPerson(index: indexPath.row)
         print("Deletei " + person.name)
       }
       handler(true)
@@ -84,7 +78,8 @@ extension ListViewController: UITableViewDelegate {
 extension ListViewController: UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 1 + listPerson.count
+//    return viewModel.getNumberOfRows()
+    return viewModel.numberOfRows
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -95,7 +90,7 @@ extension ListViewController: UITableViewDataSource {
       return cell ?? UITableViewCell()
     } else {
       let cell = tableView.dequeueReusableCell(withIdentifier: PersonTableViewCell.identifier, for: indexPath) as? PersonTableViewCell
-      cell?.setupCell(person: listPerson[indexPath.row - 1], delegate: self)
+      cell?.setupCell(person: viewModel.loudCurrentPerson(index: indexPath.row), delegate: self)
       return cell ?? UITableViewCell()
     }
   }
@@ -103,8 +98,8 @@ extension ListViewController: UITableViewDataSource {
 
 extension ListViewController: PersonTableViewCellDelegate {
   func tappedDeletePerson(in cell: PersonTableViewCell) {
-    guard let index = screen?.tableView.indexPath(for: cell) else { return } // index -> significa posição da celula!!!!
-    listPerson.remove(at: index.row - 1)
+    guard let indexPath = screen?.tableView.indexPath(for: cell) else { return } // index -> significa posição da celula!!!!
+    viewModel.removeListPerson(index: indexPath.row)
     //    screen?.tableView.deleteRows(at: [index], with: .automatic) // ELE VAI RECARREGAR APENAS AS QUE FORAM REMOVIDAS DE FORMA INTELIGENTE E AUTOMATICA, evitando, de precisar recriar todas as demais celulas
     screen?.tableView.reloadData() // O reloadData ele recarrega a TABLEVIEW COMPLETA!!!
   }
