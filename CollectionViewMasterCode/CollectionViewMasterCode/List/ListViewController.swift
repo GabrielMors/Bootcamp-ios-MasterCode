@@ -9,14 +9,7 @@ import UIKit
 
 class ListViewController: UIViewController {
   var screen: ListScreen = ListScreen()
-
-  var list = [Detail(text: "Olá mundo", image: "house"),
-              Detail(text: "Preciso de ferias", image: "house"),
-              Detail(text: "Bora estudar?", image: "house"),
-              Detail(text: "Esse trabalho ta me matando", image: "house"),
-              Detail(text: "Copa do mundo 2026", image: "house"),
-
-  ]
+  var viewModel: ListViewModel = ListViewModel()
 
   override func loadView() {
     view = screen
@@ -34,17 +27,17 @@ class ListViewController: UIViewController {
 
 extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return list.count
+    return viewModel.numberOfItems
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailCollectionViewCell.identifier, for: indexPath) as? DetailCollectionViewCell
-    cell?.setupCell(detail: list[indexPath.row])
+    cell?.setupCell(detail: viewModel.loadCurrentDetail(row: indexPath.row))
     return cell ?? UICollectionViewCell()
   }
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return DetailCollectionViewCell.calculateSize(title: list[indexPath.row].text)
+    return DetailCollectionViewCell.calculateSize(title: viewModel.getTile(row: indexPath.row))
   }
 }
 
