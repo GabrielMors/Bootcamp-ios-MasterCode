@@ -19,6 +19,9 @@ import Foundation
 // ViewModel -> responsável por toda a parte LÓGICA, com isso, ela deve armazenar todos os objetos
 // Ponto muito importante sobre a VM, o objeto deve ser private!!!!
 
+enum RowName: Int {
+  case header = 1
+}
 
 class ListViewModel {
   private var listPerson: [Person] = [Person(name: "Caio", lastName: "Pulga", job: "iOS Developer", image: "star.fill"),
@@ -35,20 +38,20 @@ class ListViewModel {
   }
 
   func getNumberOfRows() -> Int {
-    return 1 + listPerson.count
+    return RowName.header.rawValue + listPerson.count
   }
 
   // Variável computada
 
   var numberOfRows: Int {
-    return 1 + listPerson.count
+    return RowName.header.rawValue + listPerson.count
   }
 
   func removeListPerson(index: Int) {
-    listPerson.remove(at: index - 1)
+    listPerson.remove(at: index - RowName.header.rawValue)
   }
 
   func loudCurrentPerson(index: Int) -> Person {
-    return listPerson[index - 1]
+    return listPerson[index - RowName.header.rawValue]
   }
 }
