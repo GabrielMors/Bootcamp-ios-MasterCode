@@ -86,7 +86,7 @@ extension ListViewController: UITableViewDataSource {
 
     if indexPath.row == 0 {
       let cell = tableView.dequeueReusableCell(withIdentifier: UserTableViewCell.identifier, for: indexPath) as? UserTableViewCell
-      cell?.setupCell(user: User(image: UIImage(systemName: "person.circle.fill") ?? UIImage(), name: "Gabriel Mors Pulga"))
+      cell?.setupCell(user: viewModel.getUser)
       return cell ?? UITableViewCell()
     } else {
       let cell = tableView.dequeueReusableCell(withIdentifier: PersonTableViewCell.identifier, for: indexPath) as? PersonTableViewCell

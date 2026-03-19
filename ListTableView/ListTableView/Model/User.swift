@@ -5,9 +5,9 @@
 //  Created by Gabriel Mors Pulga on 02/03/26.
 //
 
-import UIKit
+import Foundation
 
 struct User {
-    var image: UIImage
+    var image: String
     var name: String
 }

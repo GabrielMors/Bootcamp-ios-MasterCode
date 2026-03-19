@@ -7,8 +7,6 @@
 
 import Foundation
 
-// Ponto muito importante sobre a VM, o objeto deve ser private!!!!
-
 // Receita de bola -> MVC para MVVM
 
 // 1- Criar a VM (ViewModel)
@@ -17,19 +15,24 @@ import Foundation
 
 // MVVM
 // Model -> Dados
-// View -> conhecida por ser uma camada "burra"-> Pq burra? Pois ela não tem nenhuma logica -> TUDO, ela SOLICITA para a ViewModel
-// ViewModel -> responsável por toda a parte LOGICA, com isso, ela deve armazenar todos os objetos
-
+// View -> conhecida por ser uma camada "burra"-> Pq burra? Pois ela não tem nenhuma lógica -> TUDO, ela SOLICITA para a ViewModel
+// ViewModel -> responsável por toda a parte LÓGICA, com isso, ela deve armazenar todos os objetos
+// Ponto muito importante sobre a VM, o objeto deve ser private!!!!
 
 
 class ListViewModel {
-
   private var listPerson: [Person] = [Person(name: "Caio", lastName: "Pulga", job: "iOS Developer", image: "star.fill"),
-                              Person(name: "Lucas", lastName: "Cavalcante", job: "Developer", image: "person.circle"),
-                              Person(name: "Gabriel", lastName: "Merenfeld", job: "Programador", image: "star.fill"),
-                              Person(name: "Felipe", lastName: "Barreto", job: "React Native Developer", image: "folder.fill"),
-                              Person(name: "Renato", lastName: "Vieira", job: "iOS Developer", image: "staroflife.fill"),
+                                      Person(name: "Lucas", lastName: "Cavalcante", job: "Developer", image: "person.circle"),
+                                      Person(name: "Gabriel", lastName: "Merenfeld", job: "Programador", image: "star.fill"),
+                                      Person(name: "Felipe", lastName: "Barreto", job: "React Native Developer", image: "folder.fill"),
+                                      Person(name: "Renato", lastName: "Vieira", job: "iOS Developer", image: "staroflife.fill"),
   ]
+  
+  private var user: User = User(image: "person.circle.fill", name: "Gabriel Mors Pulga")
+
+  var getUser: User {
+    return user
+  }
 
   func getNumberOfRows() -> Int {
     return 1 + listPerson.count

@@ -35,7 +35,7 @@ class UserTableViewCell: UITableViewCell {
   }
 
   func setupCell(user: User) {
-    userImage.image = user.image
+    userImage.image = UIImage(systemName: user.image)
     userName.text = user.name
   }
 
