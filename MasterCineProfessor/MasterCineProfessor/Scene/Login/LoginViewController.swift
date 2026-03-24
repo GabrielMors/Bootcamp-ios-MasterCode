@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: BaseViewController {
 
   let screen: LoginScreen = LoginScreen()
   let viewModel: LoginViewModel = LoginViewModel()
@@ -25,13 +25,6 @@ class LoginViewController: UIViewController {
     screen.delegate = self
     viewModel.delegate = self
   }
-
-  func showAlertController(title: String, message: String) {
-    let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-    let okButton = UIAlertAction(title: "OK", style: .default, handler: nil)
-    alertController.addAction(okButton)
-    present(alertController, animated: true)
-  }
 }
 
 extension LoginViewController: LoginScreenProtocol {
@@ -40,19 +33,18 @@ extension LoginViewController: LoginScreenProtocol {
     let password = screen.passwordTextField.text ?? ""
     viewModel.login(email: email, password: password)
   }
-  
+
   func tappedCreateAccountButton() {
-    print(#function)
+    navigationController?.pushViewController(RegisterViewController(), animated: true)
   }
 }
 
 extension LoginViewController: LoginViewModelProtocol {
   func loginDidFailure(message: String) {
-     showAlertController(title: "Atenção", message: message)
+    showAlertController(title: "Atenção", message: message)
   }
-  
+
   func loginDidSucceed() {
     showAlertController(title: "Parabens!!", message: "login feito com sucesso :)")
   }
 }
-
