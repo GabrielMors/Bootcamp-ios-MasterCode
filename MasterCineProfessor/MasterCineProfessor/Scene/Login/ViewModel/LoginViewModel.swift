@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 protocol LoginViewModelProtocol: AnyObject {
   func loginDidFailure(message: String)
@@ -27,7 +28,14 @@ class LoginViewModel {
       return
     }
 
-    // TO DO: Criar request
-    delegate?.loginDidSucceed()
+    Auth.auth().signIn(withEmail: email, password: password) { [weak self] _, error in
+      guard let self else { return }
+
+      if let error = error {
+        delegate?.loginDidFailure(message: error.localizedDescription)
+      } else {
+        delegate?.loginDidSucceed()
+      }
+    }
   }
 }

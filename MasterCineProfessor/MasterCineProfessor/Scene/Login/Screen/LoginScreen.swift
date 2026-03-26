@@ -39,6 +39,7 @@ class LoginScreen: UIView {
     tf.placeholder = "E-mail"
     tf.borderStyle = .roundedRect
     tf.keyboardType = .emailAddress
+    tf.autocapitalizationType = .none
     return tf
   }()
   
@@ -48,6 +49,7 @@ class LoginScreen: UIView {
     tf.placeholder = "Senha"
     tf.borderStyle = .roundedRect
     tf.isSecureTextEntry = true
+    tf.autocapitalizationType = .none
     return tf
   }()
   
