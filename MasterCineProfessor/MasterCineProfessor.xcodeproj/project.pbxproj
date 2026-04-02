@@ -7,9 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3400CA962F7DFA5E0043EC38 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 3400CA952F7DFA5E0043EC38 /* Lottie */; };
 		34F2961C2F74A02E004176A5 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 34F2961B2F74A02E004176A5 /* FirebaseAuth */; };
 		34F2961E2F74A02E004176A5 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 34F2961D2F74A02E004176A5 /* FirebaseCore */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3400CA9C2F7DFD070043EC38 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		349395732F6398DE00E8DA6B /* MasterCineProfessor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MasterCineProfessor.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,6 +57,7 @@
 			files = (
 				34F2961E2F74A02E004176A5 /* FirebaseCore in Frameworks */,
 				34F2961C2F74A02E004176A5 /* FirebaseAuth in Frameworks */,
+				3400CA962F7DFA5E0043EC38 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +90,7 @@
 				3493956F2F6398DE00E8DA6B /* Sources */,
 				349395702F6398DE00E8DA6B /* Frameworks */,
 				349395712F6398DE00E8DA6B /* Resources */,
+				3400CA9C2F7DFD070043EC38 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -87,6 +103,7 @@
 			packageProductDependencies = (
 				34F2961B2F74A02E004176A5 /* FirebaseAuth */,
 				34F2961D2F74A02E004176A5 /* FirebaseCore */,
+				3400CA952F7DFA5E0043EC38 /* Lottie */,
 			);
 			productName = MasterCineProfessor;
 			productReference = 349395732F6398DE00E8DA6B /* MasterCineProfessor.app */;
@@ -118,6 +135,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				34F2961A2F74A02E004176A5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				3400CA942F7DFA5E0043EC38 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 349395742F6398DE00E8DA6B /* Products */;
@@ -172,6 +190,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = technology.MasterCineProfessor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -203,6 +225,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = technology.MasterCineProfessor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -355,6 +381,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3400CA942F7DFA5E0043EC38 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.6.0;
+			};
+		};
 		34F2961A2F74A02E004176A5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -366,6 +400,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3400CA952F7DFA5E0043EC38 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3400CA942F7DFA5E0043EC38 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
 		34F2961B2F74A02E004176A5 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 34F2961A2F74A02E004176A5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

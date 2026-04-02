@@ -40,6 +40,14 @@ extension LoginViewController: LoginScreenProtocol {
 }
 
 extension LoginViewController: LoginViewModelProtocol {
+  func loading(start: Bool) {
+    if start {
+      LoadingLottie.start()
+    } else {
+      LoadingLottie.stop()
+    }
+  }
+  
   func loginDidFailure(message: String) {
     showAlertController(title: "Atenção", message: message)
   }
