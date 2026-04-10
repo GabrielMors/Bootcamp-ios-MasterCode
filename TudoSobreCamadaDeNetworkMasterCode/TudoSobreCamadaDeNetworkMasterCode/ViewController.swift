@@ -179,16 +179,68 @@ let bodyParametersParaPut = """
 //    }
 
 
-
-
-
-
-
 class ViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view.
+    deletePost(id: 10)
+  }
+
+  func fetchAllPosts() {
+    PostsService.fetchAllPosts { result in
+      switch result {
+      case .success(let posts):
+        print("Sucesso! Temos \(posts.count) posts.")
+        print(posts)
+      case .failure(let error):
+        print("Erro ao carregar os posts: \(error.message)")
+      }
+    }
+  }
+
+  func fetchPostById(id: Int) {
+    PostsService.fetchPostById(id: id) { result in
+      switch result {
+      case .success(let post):
+        print("Sucesso!")
+        print(post)
+      case .failure(let error):
+        print("Erro ao carregar os posts: \(error.message)")
+      }
+    }
+  }
+
+  func createPost(title: String, body: String, userId: Int) {
+    PostsService.createPost(title: title, body: body, userId: userId) { result in
+      switch result {
+      case .success:
+        print("Sucesso!")
+      case .failure(let error):
+        print("Erro ao carregar os posts: \(error.message)")
+      }
+    }
+  }
+
+  func postReplace(postReplace: PostReplace) {
+    PostsService.replacePostEncodable(postReplace: postReplace) { result in
+      switch result {
+      case .success:
+        print("Sucesso!")
+      case .failure(let error):
+        print("Erro ao carregar os posts: \(error.message)")
+      }
+    }
+  }
+
+  func deletePost(id: Int) {
+    PostsService.deletePost(id: id) { result in
+      switch result {
+      case .success:
+        print("Sucesso!")
+      case .failure(let error):
+        print("Erro ao carregar os posts: \(error.message)")
+      }
+    }
   }
 
 
