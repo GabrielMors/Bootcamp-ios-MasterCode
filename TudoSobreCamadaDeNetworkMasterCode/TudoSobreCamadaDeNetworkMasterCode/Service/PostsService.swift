@@ -16,6 +16,13 @@ class PostsService {
 
   // MARK: - GET - Listar todos os Posts
 
+  static func fetchAllPostsNew(completion: @escaping (Result<[Post], NetworkError>) -> Void) {
+    let request = APIRequest(endpoint: "posts")
+    APIClient.shared.request(request: request, decodeType: [Post].self) { result in
+      completion(result)
+    }
+  }
+
   static func fetchAllPosts(completion: @escaping (Result<[Post], ErrorHandler>) -> Void) {
     // URL Fornecida
     let urlString = "https://jsonplaceholder.typicode.com/posts"
@@ -212,6 +219,17 @@ class PostsService {
     task.resume()
   }
 
+  static func replacePostEncodableNew(postReplace: PostReplace, completion: @escaping (Result<Void, NetworkError>) -> Void) {
+    let request = APIRequest(endpoint: "posts/\(postReplace.id)",
+                             httpMethod: .put,
+                             headers: ["Content-Type": "application/json"],
+                             parameters: .encodable(postReplace))
+
+    APIClient.shared.request(request: request) { result in
+      completion(result)
+    }
+  }
+
   static func replacePostEncodable(postReplace: PostReplace, completion: @escaping (Result<Void, ErrorHandler>) -> Void) {
     // URL Fornecida
     let urlString = "https://jsonplaceholder.typicode.com/posts/\(postReplace.id)"
@@ -268,6 +286,12 @@ class PostsService {
     task.resume()
   }
 
+  static func deletePostNew(id: Int, completion: @escaping (Result<Void, NetworkError>) -> Void) {
+    let request = APIRequest(endpoint: "posts/\(id)", httpMethod: .delete)
+    APIClient.shared.request(request: request) { result in
+      completion(result)
+    }
+  }
 
   static func deletePost(id: Int, completion: @escaping (Result<Void, ErrorHandler>) -> Void) {
     // URL Fornecida

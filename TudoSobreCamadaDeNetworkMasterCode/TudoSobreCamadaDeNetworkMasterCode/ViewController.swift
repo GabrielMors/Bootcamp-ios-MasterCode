@@ -178,22 +178,21 @@ let bodyParametersParaPut = """
 //        print("Erro: \(httpResponse.statusCode)")
 //    }
 
-
 class ViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    deletePost(id: 10)
+    postReplace(postReplace: PostReplace(id: 10, title: "Caio", body: "Caio Body", userId: 2))
   }
 
   func fetchAllPosts() {
-    PostsService.fetchAllPosts { result in
+    PostsService.fetchAllPostsNew { result in
       switch result {
       case .success(let posts):
         print("Sucesso! Temos \(posts.count) posts.")
         print(posts)
       case .failure(let error):
-        print("Erro ao carregar os posts: \(error.message)")
+        print("Erro ao carregar os posts: \(error.errorDescription ?? "")")
       }
     }
   }
@@ -222,27 +221,25 @@ class ViewController: UIViewController {
   }
 
   func postReplace(postReplace: PostReplace) {
-    PostsService.replacePostEncodable(postReplace: postReplace) { result in
+    PostsService.replacePostEncodableNew(postReplace: postReplace) { result in
       switch result {
       case .success:
         print("Sucesso!")
       case .failure(let error):
-        print("Erro ao carregar os posts: \(error.message)")
+        print("Erro ao carregar os posts: \(error.localizedDescription)")
       }
     }
   }
 
   func deletePost(id: Int) {
-    PostsService.deletePost(id: id) { result in
+    PostsService.deletePostNew(id: id) { result in
       switch result {
       case .success:
         print("Sucesso!")
       case .failure(let error):
-        print("Erro ao carregar os posts: \(error.message)")
+        print("Erro ao carregar os posts: \(error.localizedDescription)")
       }
     }
   }
-
-
 }
 
