@@ -17,7 +17,7 @@ class PostsService {
   // MARK: - GET - Listar todos os Posts
 
   static func fetchAllPostsNew(completion: @escaping (Result<[Post], NetworkError>) -> Void) {
-    let request = APIRequest(endpoint: "posts")
+    let request = APIRequest(endpoint: "pos")
     APIClient.shared.request(request: request, decodeType: [Post].self) { result in
       completion(result)
     }

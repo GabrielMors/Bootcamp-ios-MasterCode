@@ -183,6 +183,8 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     postReplace(postReplace: PostReplace(id: 10, title: "Caio", body: "Caio Body", userId: 2))
+    deletePost(id: 2)
+    fetchAllPosts()
   }
 
   func fetchAllPosts() {
@@ -190,7 +192,7 @@ class ViewController: UIViewController {
       switch result {
       case .success(let posts):
         print("Sucesso! Temos \(posts.count) posts.")
-        print(posts)
+//        print(posts)
       case .failure(let error):
         print("Erro ao carregar os posts: \(error.errorDescription ?? "")")
       }
