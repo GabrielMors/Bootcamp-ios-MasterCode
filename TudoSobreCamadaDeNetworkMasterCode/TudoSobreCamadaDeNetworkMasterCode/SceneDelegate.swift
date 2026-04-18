@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let window = UIWindow(windowScene: windowScene)
 
     // Configurar quem vai ser a tela RAIZ, a primeira tela da aplicação
-    let viewController = ViewController()
+    let viewController = ExampleDownloadImageViewController()
     let nav = UINavigationController(rootViewController: viewController)
     window.rootViewController = nav
 
