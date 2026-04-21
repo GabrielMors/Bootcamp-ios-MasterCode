@@ -53,6 +53,8 @@ extension LoginViewController: LoginViewModelProtocol {
   }
 
   func loginDidSucceed() {
-    showAlertController(title: "Parabens!!", message: "login feito com sucesso :)")
+   let tabBar = MainTabBarController()
+    tabBar.modalPresentationStyle = .fullScreen
+    present(tabBar, animated: true)
   }
 }
