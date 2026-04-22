@@ -28,6 +28,12 @@ struct Movie: Codable, Equatable {
   let releaseDate: String?
   let voteAverage: Double?
 
+  var urlImage: String? {
+    guard let posterPath, !posterPath.isEmpty,
+          let baseImageURL = GetInfo.info(key: .imageBaseURL) as? String else { return nil }
+    return "\(baseImageURL)/w342/\(posterPath)"
+  }
+
   enum CodingKeys: String, CodingKey {
     case id
     case title

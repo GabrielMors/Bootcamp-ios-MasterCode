@@ -37,11 +37,17 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     if viewModel.isError {
-      return UITableViewCell() // celula de error
+      let cell = tableView.dequeueReusableCell(withIdentifier: ErrorTableViewCell.identifier) as? ErrorTableViewCell
+      cell?.setupCell()
+      return cell ?? UITableViewCell() // celula de error
     } else if viewModel.isEmptyMovie {
-      return UITableViewCell() // celula de empty
+      let cell = tableView.dequeueReusableCell(withIdentifier: EmptyStateTableViewCell.identifier) as? EmptyStateTableViewCell
+      cell?.setupCell()
+      return cell ?? UITableViewCell() // celula de empty
     } else {
-      return UITableViewCell() // celula de movie
+      let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.identifier) as? MovieTableViewCell
+      cell?.setupCell(movie: viewModel.loadCurrentMovie(index: indexPath.row))
+      return cell ?? UITableViewCell() // celula de movie
     }
   }
 }

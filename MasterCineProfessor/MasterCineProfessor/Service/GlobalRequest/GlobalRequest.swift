@@ -41,10 +41,7 @@ struct DefaultRequest: GlobalRequest {
   }
 
   private var apiKey: String {
-    guard let key = Bundle.main.infoDictionary?["APIKey"] as? String else {
-      fatalError("APIKey não encontrada no Info.plist")
-    }
-    return key
+    return GetInfo.info(key: .apiKey) as? String ?? ""
   }
 }
 

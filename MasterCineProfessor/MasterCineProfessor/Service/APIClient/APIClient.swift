@@ -42,10 +42,8 @@ class APIClient {
     if let baseURL {
       self.baseURL = baseURL
     } else {
-      guard let baseUrl = Bundle.main.infoDictionary?["BaseURL"] as? String else {
-        fatalError("BaseURL não encontrada no Info.plist")
-      }
-      self.baseURL = baseUrl
+      let baseUrl = GetInfo.info(key: .baseURL) as? String
+      self.baseURL = baseUrl ?? ""
     }
   }
 

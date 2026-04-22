@@ -21,12 +21,13 @@ class HomeScreen: UIView {
   lazy var tableView: UITableView = {
     let tableView = UITableView()
     tableView.translatesAutoresizingMaskIntoConstraints = false
-    // TO DO: REGISTER
     tableView.backgroundColor = .white
     tableView.separatorStyle = .singleLine
+    tableView.register(EmptyStateTableViewCell.self, forCellReuseIdentifier: EmptyStateTableViewCell.identifier)
+    tableView.register(ErrorTableViewCell.self, forCellReuseIdentifier: ErrorTableViewCell.identifier)
+    tableView.register(MovieTableViewCell.self, forCellReuseIdentifier: MovieTableViewCell.identifier)
     return tableView
   }()
-
 
   init() {
     super.init(frame: .zero)
@@ -53,7 +54,7 @@ class HomeScreen: UIView {
       tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
       tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
       tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
-      tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
+      tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
     ])
   }
 
