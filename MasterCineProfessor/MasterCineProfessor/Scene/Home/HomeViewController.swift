@@ -50,6 +50,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
       return cell ?? UITableViewCell() // celula de movie
     }
   }
+
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let movie = viewModel.loadCurrentMovie(index: indexPath.row)
+    let movieDetail = MovieDetailViewController(movieId: movie.id)
+    navigationController?.pushViewController(movieDetail, animated: true)
+  }
 }
 
 extension HomeViewController: UISearchBarDelegate {
