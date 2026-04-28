@@ -53,6 +53,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    guard !viewModel.isEmptyMovie &&
+    !viewModel.isError &&
+    RemoteConfigManager.shared.getBool(forKey: .showNewHome) else { return }
     let movie = viewModel.loadCurrentMovie(index: indexPath.row)
     let movieDetail = MovieDetailViewController(movieId: movie.id)
     navigationController?.pushViewController(movieDetail, animated: true)
