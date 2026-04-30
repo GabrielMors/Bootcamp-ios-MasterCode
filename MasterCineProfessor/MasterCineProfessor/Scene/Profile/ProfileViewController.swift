@@ -11,8 +11,7 @@ class ProfileViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    let numbers = [0]
-    let _ = numbers[1]
+
   }
 
 }
