@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class MainTabBarController: UITabBarController {
 
@@ -31,7 +32,8 @@ class MainTabBarController: UITabBarController {
 
   private func configTabBar() {
     let home = UINavigationController(rootViewController: HomeViewController())
-    let profile = UINavigationController(rootViewController: ProfileViewController())
+    let hostingController = UIHostingController(rootView: ProfileView())
+    let profile = UINavigationController(rootViewController: hostingController)
 
     home.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), selectedImage:  UIImage(systemName: "house.fill"))
     profile.tabBarItem = UITabBarItem(title: "Perfil", image: UIImage(systemName: "person"), selectedImage:  UIImage(systemName: "person.fill"))

@@ -20,6 +20,7 @@ class RegisterScreen: UIView {
     let imageView = UIImageView()
     imageView.translatesAutoresizingMaskIntoConstraints = false
     imageView.image = UIImage(systemName: "film")
+    imageView.tintColor = .black
     return imageView
   }()
 
@@ -65,12 +66,12 @@ class RegisterScreen: UIView {
   }()
 
   lazy var registerButton: UIButton = {
-    let button = UIButton(type: .system)
+    let button = UIButton()
     button.translatesAutoresizingMaskIntoConstraints = false
     button.setTitle("Cadastrar-se", for: .normal)
     button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
     button.setTitleColor(.white, for: .normal)
-    button.backgroundColor = .blue
+    button.backgroundColor = .systemBlue
     button.clipsToBounds = true
     button.layer.cornerRadius = 8
     button.addTarget(self, action: #selector(tappedRegisterButton), for: .touchUpInside)
@@ -82,7 +83,7 @@ class RegisterScreen: UIView {
     button.translatesAutoresizingMaskIntoConstraints = false
     button.setTitle("Voltar", for: .normal)
     button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-    button.setTitleColor(.blue, for: .normal)
+    button.setTitleColor(.systemBlue, for: .normal)
     button.addTarget(self, action: #selector(tappedBackButton), for: .touchUpInside)
     return button
   }()

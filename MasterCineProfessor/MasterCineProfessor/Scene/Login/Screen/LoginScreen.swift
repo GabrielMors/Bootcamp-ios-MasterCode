@@ -40,8 +40,8 @@ class LoginScreen: UIView {
     tf.borderStyle = .roundedRect
     tf.keyboardType = .emailAddress
     tf.autocapitalizationType = .none
-//    tf.text = "caio@outlook.com"
-    tf.text = UserDefaultsManager.shared.getString(forKey: UserDefaultsKey.email)
+    tf.text = "caio@outlook.com"
+//    tf.text = UserDefaultsManager.shared.getString(forKey: UserDefaultsKey.email)
     return tf
   }()
   
@@ -52,7 +52,7 @@ class LoginScreen: UIView {
     tf.borderStyle = .roundedRect
     tf.isSecureTextEntry = true
     tf.autocapitalizationType = .none
-//    tf.text = "123456"
+    tf.text = "123456"
     return tf
   }()
   
