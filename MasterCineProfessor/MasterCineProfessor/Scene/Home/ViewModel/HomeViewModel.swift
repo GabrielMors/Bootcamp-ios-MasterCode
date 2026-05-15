@@ -16,6 +16,7 @@ protocol HomeViewModelProtocol: AnyObject {
   func didChangeLoading(start: Bool)
 }
 
+@MainActor
 final class HomeViewModel {
 
   weak var delegate: HomeViewModelProtocol?
@@ -38,9 +39,10 @@ final class HomeViewModel {
     currentPage = 1
     totalPages = 1
     isError = false
-    fetchPopularMovies(page: currentPage, isPagination: false)
+    fetchPopularMoviesAA(page: currentPage, isPagination: false)
   }
 
+//MARK: GCD
   private func fetchPopularMovies(page: Int, isPagination: Bool) {
     guard !isLoadingPage else { return }
 
@@ -74,6 +76,44 @@ final class HomeViewModel {
       delegate?.didUpdateMovies()
     }
   }
+//MARK: ASYNC/AWAIT
+    private func fetchPopularMoviesAA(page: Int, isPagination: Bool) {
+        guard !isLoadingPage else { return }
+
+        isLoadingPage = true
+        if !isPagination {
+          delegate?.didChangeLoading(start: true)
+        }
+        //Task -> usado quando for chamar um metodo async throws(async/await)
+        Task { [weak self] in
+            guard let self else { return }
+            
+            do {
+                //try await tem como foco fazer a chamada de um metodo async throws
+                let success = try await service.fetchPopular(page: page)
+                currentPage = success.page
+                totalPages = success.totalPages
+                if !isPagination {
+                    movies = success.results
+                } else {
+                    movies.append(contentsOf: success.results)
+                }
+                isError = false
+                
+            } catch {
+                isError = true
+                if !isPagination {
+                  movies.removeAll()
+                }
+            }
+            
+            isLoadingPage = false
+            delegate?.didChangeLoading(start: false)
+            isInitialRequest = false
+            delegate?.didUpdateMovies()
+        }
+    }
+    
 
   private func fetchSearch(query: String) {
     currentPage = 1
