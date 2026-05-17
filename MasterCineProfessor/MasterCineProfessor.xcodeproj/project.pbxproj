@@ -14,6 +14,16 @@
 		34F2961E2F74A02E004176A5 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 34F2961D2F74A02E004176A5 /* FirebaseCore */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		4DF69F3D2FB8F76200308A0D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3493956B2F6398DE00E8DA6B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 349395722F6398DE00E8DA6B;
+			remoteInfo = MasterCineProfessor;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		3400CA9C2F7DFD070043EC38 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -29,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		349395732F6398DE00E8DA6B /* MasterCineProfessor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MasterCineProfessor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DF69F392FB8F76200308A0D /* MasterCineProfessorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MasterCineProfessorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -50,6 +61,11 @@
 			path = MasterCineProfessor;
 			sourceTree = "<group>";
 		};
+		4DF69F3A2FB8F76200308A0D /* MasterCineProfessorTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = MasterCineProfessorTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +78,13 @@
 				34D4420D2FA2BDEF00A99147 /* FirebaseCrashlytics in Frameworks */,
 				3400CA962F7DFA5E0043EC38 /* Lottie in Frameworks */,
 				342311972FA0392B00AA9860 /* FirebaseRemoteConfig in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DF69F362FB8F76200308A0D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				349395752F6398DE00E8DA6B /* MasterCineProfessor */,
+				4DF69F3A2FB8F76200308A0D /* MasterCineProfessorTests */,
 				342311952FA0392B00AA9860 /* Frameworks */,
 				349395742F6398DE00E8DA6B /* Products */,
 			);
@@ -88,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				349395732F6398DE00E8DA6B /* MasterCineProfessor.app */,
+				4DF69F392FB8F76200308A0D /* MasterCineProfessorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -124,6 +149,29 @@
 			productReference = 349395732F6398DE00E8DA6B /* MasterCineProfessor.app */;
 			productType = "com.apple.product-type.application";
 		};
+		4DF69F382FB8F76200308A0D /* MasterCineProfessorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4DF69F412FB8F76200308A0D /* Build configuration list for PBXNativeTarget "MasterCineProfessorTests" */;
+			buildPhases = (
+				4DF69F352FB8F76200308A0D /* Sources */,
+				4DF69F362FB8F76200308A0D /* Frameworks */,
+				4DF69F372FB8F76200308A0D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4DF69F3E2FB8F76200308A0D /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				4DF69F3A2FB8F76200308A0D /* MasterCineProfessorTests */,
+			);
+			name = MasterCineProfessorTests;
+			packageProductDependencies = (
+			);
+			productName = MasterCineProfessorTests;
+			productReference = 4DF69F392FB8F76200308A0D /* MasterCineProfessorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -131,11 +179,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 2630;
+				LastSwiftUpdateCheck = 2640;
 				LastUpgradeCheck = 2630;
 				TargetAttributes = {
 					349395722F6398DE00E8DA6B = {
 						CreatedOnToolsVersion = 26.3;
+					};
+					4DF69F382FB8F76200308A0D = {
+						CreatedOnToolsVersion = 26.4;
+						TestTargetID = 349395722F6398DE00E8DA6B;
 					};
 				};
 			};
@@ -158,12 +210,20 @@
 			projectRoot = "";
 			targets = (
 				349395722F6398DE00E8DA6B /* MasterCineProfessor */,
+				4DF69F382FB8F76200308A0D /* MasterCineProfessorTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		349395712F6398DE00E8DA6B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DF69F372FB8F76200308A0D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -206,7 +266,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4DF69F352FB8F76200308A0D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4DF69F3E2FB8F76200308A0D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 349395722F6398DE00E8DA6B /* MasterCineProfessor */;
+			targetProxy = 4DF69F3D2FB8F76200308A0D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		349395872F6398E100E8DA6B /* Debug */ = {
@@ -401,6 +476,56 @@
 			};
 			name = Release;
 		};
+		4DF69F3F2FB8F76200308A0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.4;
+				MACOSX_DEPLOYMENT_TARGET = 26.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Mastercine.MasterCineProfessorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MasterCineProfessor.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MasterCineProfessor";
+				XROS_DEPLOYMENT_TARGET = 26.4;
+			};
+			name = Debug;
+		};
+		4DF69F402FB8F76200308A0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.4;
+				MACOSX_DEPLOYMENT_TARGET = 26.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Mastercine.MasterCineProfessorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MasterCineProfessor.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MasterCineProfessor";
+				XROS_DEPLOYMENT_TARGET = 26.4;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -418,6 +543,15 @@
 			buildConfigurations = (
 				349395872F6398E100E8DA6B /* Debug */,
 				349395882F6398E100E8DA6B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4DF69F412FB8F76200308A0D /* Build configuration list for PBXNativeTarget "MasterCineProfessorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DF69F3F2FB8F76200308A0D /* Debug */,
+				4DF69F402FB8F76200308A0D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

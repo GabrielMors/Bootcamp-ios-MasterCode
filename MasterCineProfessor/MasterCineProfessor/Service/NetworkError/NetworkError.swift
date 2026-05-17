@@ -7,7 +7,8 @@
 
 import Foundation
 
-enum NetworkError {
+//Protocolo Equatable é necessario para poder ser usado em comparações 
+enum NetworkError: Equatable {
   case invalidURL(url: String)
   case invalidResponse
   case invalidRequest
@@ -36,4 +37,29 @@ extension NetworkError: LocalizedError {
       return "Error ao montar a request"
     }
   }
+}
+
+//MARK: Conformidade com o protocolo Equatable
+extension NetworkError {
+    //nonisolatad -> contexto não isolado ou seja pode ser utilizado em qualquer thread
+    nonisolated static func == (lhs: NetworkError, rhs: NetworkError) -> Bool {
+        switch (lhs, rhs) {
+        case (.invalidURL(let lhsURL), .invalidURL(let rhsURL)):
+            return lhsURL == rhsURL
+        case (.invalidResponse, .invalidResponse):
+            return true
+        case (.invalidRequest, .invalidRequest):
+            return true
+        case (.noData, .noData):
+            return true
+        case (.statusCode(let lhsCode), .statusCode(let rhsCode)):
+            return lhsCode == rhsCode
+        case (.decodingError, .decodingError):
+            return true
+        case (.networkFailure, .networkFailure):
+            return true
+        default:
+            return false
+        }
+    }
 }

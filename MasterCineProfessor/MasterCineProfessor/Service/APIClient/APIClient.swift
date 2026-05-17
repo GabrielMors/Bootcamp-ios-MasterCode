@@ -22,7 +22,12 @@ class NewAPIClient {
     static var client = APIClient(requestBuilder: NewDefaultRequest())
 }
 
-class APIClient {
+//Implementação de um protocolo para realizarmos uma injeção de Spy para os testes
+protocol APIClientProtocol {
+  func request<T: Decodable>(request: APIRequest, decodeType: T.Type, completion: @escaping (Result<T, NetworkError>) -> Void)
+}
+
+class APIClient: APIClientProtocol {
     
     static let shared = APIClient()
     
