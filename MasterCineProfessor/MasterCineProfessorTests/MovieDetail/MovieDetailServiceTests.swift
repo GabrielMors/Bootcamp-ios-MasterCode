@@ -11,20 +11,20 @@ import XCTest
 final class MovieDetailServiceTests: XCTestCase {
     //ambiente 100% controlado, queremos crash em caso de algo fora do esperado
     private var sut: MovieDetailService!
-    private var apiClientMock: APIClientSpy!
+    private var apiClientSpy: APIClientSpy!
     
     //Método de instanciação onde parametros são alimentados
     override func setUp() {
         super.setUp()
         
-        apiClientMock = APIClientSpy()
-        sut = MovieDetailService(apiClient: apiClientMock)
+        apiClientSpy = APIClientSpy()
+        sut = MovieDetailService(apiClient: apiClientSpy)
     }
     
     //Método oposto ao setUp com o foco de limpar as instancias
     override func tearDown() {
         sut = nil
-        apiClientMock = nil
+        apiClientSpy = nil
         
         super.tearDown()
     }
@@ -33,7 +33,7 @@ final class MovieDetailServiceTests: XCTestCase {
     func test_fetchMovieDetail_whenRequestSucceeds_shouldReturnMovieDetail() {
         // Given
         let expectedResponse = self.getMovieDetailMock()
-        apiClientMock.result = .success(expectedResponse)
+        apiClientSpy.result = .success(expectedResponse)
         
         // When
         sut.fetchMovieDetail(id: 123) { result in
@@ -51,7 +51,7 @@ final class MovieDetailServiceTests: XCTestCase {
     
     func test_fetchMovieDetail_whenRequestFails_shouldReturnError() {
         // Given
-        apiClientMock.result = .failure(.invalidResponse)
+        apiClientSpy.result = .failure(.invalidResponse)
 
         // When
         sut.fetchMovieDetail(id: 123) { result in
@@ -70,7 +70,7 @@ final class MovieDetailServiceTests: XCTestCase {
     func test_fetchMovieDetail_howManyTimes_shouldCallTheApiClient() {
         // Given
         let expectedResponse = self.getMovieDetailMock()
-        apiClientMock.result = .success(expectedResponse)
+        apiClientSpy.result = .success(expectedResponse)
         
         // When
         sut.fetchMovieDetail(id: 123) { result in
@@ -78,7 +78,7 @@ final class MovieDetailServiceTests: XCTestCase {
             // Then
             switch result {
             case .success(_):
-                XCTAssertEqual(self.apiClientMock.requestMethodCount, 1)
+                XCTAssertEqual(self.apiClientSpy.requestMethodCount, 1)
                 
             case .failure:
                 XCTFail("Expected success but received failure")
