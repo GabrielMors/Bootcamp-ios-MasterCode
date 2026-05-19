@@ -115,3 +115,20 @@ struct MovieSummary: Decodable, Equatable {
     return "\(baseImageURL)/w342/\(posterPath)"
   }
 }
+
+extension MovieDetailResponse {
+    static let mock = MovieDetailResponse(
+        id: 1,
+        title: "Batman",
+        overview: "Filme teste",
+        runtime: 120,
+        releaseDate: "2026-01-01",
+        voteAverage: 8.5,
+        posterPath: "/poster.jpg",
+        backdropPath: "/backdrop.jpg",
+        genres: [],
+        credits: nil,
+        videos: nil,
+        recommendations: nil
+    )
+}
