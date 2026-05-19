@@ -37,3 +37,27 @@ extension NetworkError: LocalizedError {
     }
   }
 }
+
+extension NetworkError: Equatable {
+    //nonisolated -> contexto não isolado a thread de execução que utiliza o networkError
+    nonisolated static func == (lhs: NetworkError, rhs: NetworkError) -> Bool {
+        switch (lhs, rhs) {
+        case (.invalidURL(let lhsURL), .invalidURL(let rhsURL)):
+            return lhsURL == rhsURL
+        case (.statusCode(let lhsStatusCode), .statusCode(let rhsStatusCode)):
+            return lhsStatusCode == rhsStatusCode
+        case (.invalidResponse, .invalidResponse):
+            return true
+        case (.invalidRequest, .invalidRequest):
+            return true
+        case (.noData, .noData):
+            return true
+        case (.decodingError, .decodingError):
+            return true
+        case (.networkFailure, .networkFailure):
+            return true
+        default:
+            return false
+        }
+    }
+}
