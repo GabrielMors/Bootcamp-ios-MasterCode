@@ -47,6 +47,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     } else {
       let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.identifier) as? MovieTableViewCell
       cell?.setupCell(movie: viewModel.loadCurrentMovie(index: indexPath.row))
+        cell?.accessibilityIdentifier = "movie_cell"
       viewModel.loadNextPageIfNeeded(index: indexPath.row)
       return cell ?? UITableViewCell() // celula de movie
     }

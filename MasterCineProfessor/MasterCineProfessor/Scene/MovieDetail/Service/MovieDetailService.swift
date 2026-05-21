@@ -7,7 +7,11 @@
 
 import Foundation
 
-final class MovieDetailService {
+protocol MovieDetailServiceProtocol {
+    func fetchMovieDetail(id: Int, completion: @escaping (Result<MovieDetailResponse, NetworkError>) -> Void)
+}
+
+final class MovieDetailService: MovieDetailServiceProtocol {
     //instancia da classe chamada
     private let apiClient: APIClientProtocol
     //inicializador construido de forma onde o parametro recebe valor default

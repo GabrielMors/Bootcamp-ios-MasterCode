@@ -15,11 +15,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     guard let windowScene = (scene as? UIWindowScene) else { return }
     let window = UIWindow(windowScene: windowScene)
-    let vc = LoginViewController()
-    let nav = UINavigationController(rootViewController: vc)
-    window.rootViewController = nav
-    window.makeKeyAndVisible()
     self.window = window
+      if ProcessInfo.processInfo.arguments.contains("TEST") {
+          let nav = UINavigationController(rootViewController: HomeViewController())
+          window.rootViewController = nav
+          window.makeKeyAndVisible()
+      } else {
+          let vc = LoginViewController()
+          let nav = UINavigationController(rootViewController: vc)
+          window.rootViewController = nav
+          window.makeKeyAndVisible()
+      }
   }
 
   func sceneDidDisconnect(_ scene: UIScene) {

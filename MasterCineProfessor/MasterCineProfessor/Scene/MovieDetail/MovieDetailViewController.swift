@@ -62,14 +62,17 @@ extension MovieDetailViewController: UITableViewDelegate, UITableViewDataSource 
     case .header(let headerViewData):
       let cell = tableView.dequeueReusableCell(withIdentifier: MovieDetailHeaderTableViewCell.identifier) as? MovieDetailHeaderTableViewCell
       cell?.setupCell(headerData: headerViewData)
+        cell?.accessibilityIdentifier = "movie_detail_header"
       return cell ?? UITableViewCell()
     case .overview(let description):
       let cell = tableView.dequeueReusableCell(withIdentifier: OverviewTableViewCell.identifier) as? OverviewTableViewCell
       cell?.setupCell(description: description)
+        cell?.accessibilityIdentifier = "movie_detail_overview"
       return cell ?? UITableViewCell()
     case .error(let message):
       let cell = tableView.dequeueReusableCell(withIdentifier: ErrorTableViewCell.identifier) as? ErrorTableViewCell
       cell?.setupCell(title: message)
+        cell?.accessibilityIdentifier = "movie_detail_error"
       return cell ?? UITableViewCell()
     }
   }
