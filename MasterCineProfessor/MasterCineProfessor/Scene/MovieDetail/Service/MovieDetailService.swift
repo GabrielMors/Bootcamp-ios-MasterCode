@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class MovieDetailService {
+final class MovieDetailService: MovieDetailServiceProtocol {
     //instancia da classe chamada
     private let apiClient: APIClientProtocol
     //inicializador construido de forma onde o parametro recebe valor default

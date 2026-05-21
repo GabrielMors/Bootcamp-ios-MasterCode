@@ -41,6 +41,17 @@
                ReferencedContainer = "container:MasterCineProfessor.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4DF6A3712FBDEC2600308A0D"
+               BuildableName = "MasterCineProfessorUITests.xctest"
+               BlueprintName = "MasterCineProfessorUITests"
+               ReferencedContainer = "container:MasterCineProfessor.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

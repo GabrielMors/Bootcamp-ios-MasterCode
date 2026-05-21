@@ -62,6 +62,7 @@ extension MovieDetailViewController: UITableViewDelegate, UITableViewDataSource 
     case .header(let headerViewData):
       let cell = tableView.dequeueReusableCell(withIdentifier: MovieDetailHeaderTableViewCell.identifier) as? MovieDetailHeaderTableViewCell
       cell?.setupCell(headerData: headerViewData)
+      cell?.accessibilityIdentifier = "movie_detail_header_cell"
       return cell ?? UITableViewCell()
     case .overview(let description):
       let cell = tableView.dequeueReusableCell(withIdentifier: OverviewTableViewCell.identifier) as? OverviewTableViewCell

@@ -25,15 +25,21 @@ protocol MovieDetailViewModelProtocol: AnyObject {
   func didChangeLoading(start: Bool)
 }
 
+
+protocol MovieDetailServiceProtocol {
+  func fetchMovieDetail(id: Int, completion: @escaping (Result<MovieDetailResponse, NetworkError>) -> Void)
+}
+
 final class MovieDetailViewModel {
 
-  private var service = MovieDetailService()
+  private let service: MovieDetailServiceProtocol
   private var movieId: Int
   private var rows: [MovieDetailRow] = []
   weak var delegate: MovieDetailViewModelProtocol?
 
-  init(movieId: Int) {
+  init(movieId: Int, service: MovieDetailServiceProtocol = MovieDetailService()) {
     self.movieId = movieId
+    self.service = service
   }
 
   func fetchMovieDetail() {

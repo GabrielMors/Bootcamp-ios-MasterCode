@@ -15,6 +15,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     guard let windowScene = (scene as? UIWindowScene) else { return }
     let window = UIWindow(windowScene: windowScene)
+    self.window = window
+      
+      if ProcessInfo.processInfo.arguments.contains("UI_TEST") {
+          let nav = UINavigationController(
+              rootViewController: HomeViewController()
+          )
+          
+          window.rootViewController = nav
+          window.makeKeyAndVisible()
+          
+          return
+      }
+      
     let vc = LoginViewController()
     let nav = UINavigationController(rootViewController: vc)
     window.rootViewController = nav
@@ -52,4 +65,3 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
 }
-
