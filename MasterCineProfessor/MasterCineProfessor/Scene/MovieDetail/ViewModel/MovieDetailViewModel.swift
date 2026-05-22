@@ -29,7 +29,7 @@ final class MovieDetailViewModel {
     
     private var service: MovieDetailServiceProtocol
     private var movieId: Int
-    private var rows: [MovieDetailRow] = []
+    private(set) var rows: [MovieDetailRow] = []
     weak var delegate: MovieDetailViewModelProtocol?
     
     init(movieId: Int, service: MovieDetailServiceProtocol = MovieDetailService()) {
