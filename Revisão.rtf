@@ -1,0 +1,66 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2870
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid1\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\paperw11900\paperh16840\margl1440\margr1440\vieww37860\viewh19300\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs48 \cf0 1. Qual a principal diferen\'e7a entre UIKit e SwiftUI em rela\'e7\'e3o ao gerenciamento de interface e ciclo de atualiza\'e7\'e3o da tela?\
+- R: UIKit ele \'e9 mais imperativo, contando com mudan\'e7as de UI manualmente(via protocolos e callback), SwiftUI \'e9 declarativo, onde a interface atualiza via reatividade(via notations por exemplo)\
+\
+2. Explique o que s\'e3o protocolos em Swift e cite um exemplo pr\'e1tico de uso no desenvolvimento iOS.\
+- R: S\'e3o contratos onde usamos para limitar ou delegar responsabilidades e m\'e9todos, facilitando a inje\'e7\'e3o de depend\'eancia dependendo da usabilidade. Ex. UITableViewDataSource\
+\
+3. O que \'e9 uma closure em Swift? Qual a diferen\'e7a entre closures escaping e non-escaping?\
+- R: Bloco de c\'f3digo reutiliz\'e1vel que pode ser passado como par\'e2metro e pode ser armazenado. Escaping \'e9 pra ser executada ap\'f3s o termino da fun\'e7\'e3o, ja o non-escaping \'e9 para ser executada durante a fun\'e7\'e3o.\
+\
+4. Em UIKit, qual a diferen\'e7a entre frame, bounds e center de uma UIView?\
+- R: Center: ponto central da view em rela\'e7\'e3o superView, Frame: o tamanho e a posi\'e7\'e3o do elemento(subview) em rela\'e7\'e3o a superview, Bounds: as coordenadas(posicao) em rela\'e7\'e3o a pr\'f3pria view\
+\
+5. O que s\'e3o Auto Layout Constraints e quais problemas elas resolvem no desenvolvimento de interfaces iOS?\
+- R: S\'e3o regras para posicionar e dimensionar componentes na tela, criar responsividade da tela.\
+\
+6. Qual a diferen\'e7a entre @State, @Binding e @ObservedObject no SwiftUI?\
+- R: State: estado interno da view, Binging: referencia do estado de uma outra view, ObservedObject: observa mudan\'e7as em objetos externos em um c\'f3digo reativo\
+\
+7. Explique o conceito de delega\'e7\'e3o (Delegate Pattern) no iOS e cite um componente da Apple que utiliza esse padr\'e3o.
+\fs24 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs48 \cf0 - R: \'c9 um protocolo com o foco em delegar a responsabilidade de um comportamento que n\'e3o ser\'e1 executado na classe, ex. UITableViewDelegate\
+\
+8. O que s\'e3o testes unit\'e1rios e qual a import\'e2ncia deles em um projeto iOS?\
+- R: fun\'e7\'f5es de testes automatizado para testar unidades isoladas do sistema, os testes atuam como uma seguran\'e7a para casos de manuten\'e7\'e3o e refatora\'e7\'e3o garantindo que o c\'f3digo continua funcionando como esperado.\
+\
+9. Qual a diferen\'e7a entre XCTest tradicional e Swift Testing (import Testing)?\
+- R: XCTest \'e9 o m\'e9todo tradicional da apple para testes, j\'e1 o swift testing \'e9 mais moderno ele \'e9 mais expressivo e trabalha melhor com os recursos de concorrencia, uma das principais diferen\'e7as \'e9 a configura\'e7\'e3o dos par\'e2metros de teste onde o swift testing \'e9 mais simples e direto.\
+\
+10. Em Swift, qual a diferen\'e7a entre struct e class? Em quais cen\'e1rios voc\'ea escolheria cada uma?\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 - R: A classe \'e9 uma referece type e o struct \'e9 value type, classe \'e9 usada para heran\'e7a, polimorfismo, compartilhamento e controle de ciclo de vida, ja a struct \'e9 recomendada para modelos simples e estruturas de c\'f3digo\
+\
+11. O que acontece quando ocorre um retain cycle no iOS? Como weak e unowned ajudam a evitar esse problema?\
+- R: S\'e3o classes com referencias fortes entre elas gerando um ciclo isolado de referencia que n\'e3o deslocados gerando memory leak. Weak: uma referencia fraca que nao soma no ARC, Unowned: referencia que n\'e3o soma no ARC com a diferen\'e7a que ele n\'e3o \'e9 um objeto opcional \
+\
+12. No contexto de arquitetura iOS, qual a responsabilidade de uma ViewModel em MVVM e quais vantagens essa separa\'e7\'e3o traz para o projeto?\
+- R: Gerenciar regras de negocio, preparar dados enviados pra view e tamb\'e9m \'e9 uma ponte entre view, camada l\'f3gica e as models. As vantagens s\'e3o: \
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural\partightenfactor0
+\ls1\ilvl0\cf0 {\listtext	\uc0\u8259 	}melhor manuten\'e7\'e3o\
+{\listtext	\uc0\u8259 	}Facilidade em testes\
+{\listtext	\uc0\u8259 	}Escalabilidade\
+{\listtext	\uc0\u8259 	}Menor reutiliza\'e7\'e3o de c\'f3digo\
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural\partightenfactor0
+\ls1\ilvl0\cf0 {\listtext	\uc0\u8259 	}Menor acoplamento/maior separa\'e7\'e3o de responsabilidades\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\
+\
+\
+\
+\
+\
+}
