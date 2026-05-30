@@ -39,6 +39,14 @@ class MovieTableViewCell: UITableViewCell {
     label.numberOfLines = 2
     return label
   }()
+    
+  let blankView: UIView = {
+    let view = UIView()
+    view.translatesAutoresizingMaskIntoConstraints = false
+    view.backgroundColor = .clear
+    return view
+  }()
+    
 
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -55,23 +63,30 @@ class MovieTableViewCell: UITableViewCell {
      contentView.addSubview(movieImageView)
      contentView.addSubview(titleLabel)
      contentView.addSubview(descriptionLabel)
+     contentView.addSubview(blankView)
   }
 
   func configConstraints() {
     NSLayoutConstraint.activate([
-      movieImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
       movieImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
       movieImageView.widthAnchor.constraint(equalToConstant: 84),
       movieImageView.heightAnchor.constraint(equalToConstant: 100),
-      movieImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
+      movieImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
 
-      titleLabel.topAnchor.constraint(equalTo: movieImageView.topAnchor),
+      titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
       titleLabel.leadingAnchor.constraint(equalTo: movieImageView.trailingAnchor, constant: 12),
       titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+      titleLabel.heightAnchor.constraint(equalToConstant: 20),
 
       descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
       descriptionLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
       descriptionLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
+      
+      blankView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor),
+      blankView.heightAnchor.constraint(equalToConstant: 73),
+      blankView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+      blankView.widthAnchor.constraint(equalToConstant: 1),
+      blankView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
     ])
   }
 

@@ -25,6 +25,7 @@ class ErrorTableViewCell: UITableViewCell {
     label.textColor = .black
     label.font = UIFont.boldSystemFont(ofSize: 18)
     label.textAlignment = .center
+    label.numberOfLines = 0
     return label
   }()
 
