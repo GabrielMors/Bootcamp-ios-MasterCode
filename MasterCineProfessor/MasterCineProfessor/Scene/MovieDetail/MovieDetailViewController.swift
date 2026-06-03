@@ -40,7 +40,7 @@ class MovieDetailViewController: UIViewController {
 
 extension MovieDetailViewController: MovieDetailViewModelProtocol {
   func didUpdateMovies() {
-    screen.tableView.reloadData()
+    screen.reloadTableView()
   }
   
   func didChangeLoading(start: Bool) {

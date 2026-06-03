@@ -7,11 +7,11 @@
 
 import UIKit
 
-class MovieDetailHeaderTableViewCell: UITableViewCell {
+final class MovieDetailHeaderTableViewCell: UITableViewCell {
 
   static let identifier = String(describing: MovieDetailHeaderTableViewCell.self)
 
-  lazy var headerView: MovieDetailHeaderView = {
+  private lazy var headerView: MovieDetailHeaderView = {
     let view = MovieDetailHeaderView()
     view.translatesAutoresizingMaskIntoConstraints = false
     return view
@@ -28,11 +28,11 @@ class MovieDetailHeaderTableViewCell: UITableViewCell {
     fatalError("init(coder:) has not been implemented")
   }
 
-  func addElements() {
+  private func addElements() {
      contentView.addSubview(headerView)
   }
 
-  func configConstraints() {
+  private func configConstraints() {
     NSLayoutConstraint.activate([
       headerView.topAnchor.constraint(equalTo: contentView.topAnchor),
       headerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
